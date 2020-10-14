@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 RHEL 8 CIS STIG
 ================
 
@@ -192,4 +191,3 @@ MIT
 
                       Thanks
                       Shakti Singh 
->>>>>>> a94ce0a59b3beab613cc0f1247a86f692f581f70
