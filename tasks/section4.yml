@@ -430,6 +430,7 @@
     - level2
     - rule_4.2.1.5
     - rhel8_section4
+  ignore_errors: yes
 
 - name: "NOTSCORED | 4.2.1.6 | Ensure remote rsyslog messages are only accepted on designated log hosts"
   command: /bin/true

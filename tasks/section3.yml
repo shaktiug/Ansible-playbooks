@@ -628,7 +628,7 @@
   block:
     - name: "SCORED | 3.6 | Ensure permissions on bootloader config are configured" # Modified SI Baseline
       stat:
-        path: /etc/grub2-efi.cfg
+        path: /etc/grub2.cfg
       register: grub_cfg
 
     - name: "SCORED | 3.6 | Ensure permissions on bootloader config are configured"

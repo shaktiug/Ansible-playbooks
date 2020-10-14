@@ -100,19 +100,21 @@
     - scored
     - rhel8_section1
     - rule_1.1.2
+  ignore_errors: yes
 
 - name: "scored | 1.1.3 | Ensure nodev option set on /tmp partition\n
          scored | 1.1.4 | Ensure nosuid option set on /tmp partition\n
          scored | 1.1.5 | Ensure noexec option set on /tmp partition\n
          | drop custom tmp.mount"
   block:
-    - name: "Ensure options in fstab are set"
-      mount:
-        name: /tmp
-        src: "{{ rhel8cis_tmp['source'] }}"
-        state: mounted
-        fstype: "{{ rhel8cis_tmp['fstype'] }}"
-        opts: "{{ rhel8cis_tmp['opts'] }}"
+    #- name: "Ensure options in fstab are set"
+    #  mount:
+    #    name: /tmp
+    #    src: "{{ rhel8cis_tmp['source'] }}"
+    #    state: mounted
+    #    fstype: "{{ rhel8cis_tmp['fstype'] }}"
+    #    opts: "{{ rhel8cis_tmp['opts'] }}"
+      
 
     - name: "Ensure local-fs.target.wants dir exists"
       file:
@@ -231,20 +233,20 @@
     - rule_1.1.13
     - skip_ansible_lint
 
-- name: "SCORED | 1.1.14 | Ensure nodev option set on /home partition"
-  mount:
-    name: "/home"
-    src: "{{ rhel8cis_home['source'] }}"
-    state: mounted
-    fstype: "{{ rhel8cis_home['fstype'] }}"
-    opts: "{{ rhel8cis_home['opts'] }}"
-  when:
-    - "{{ rhel8cis_home['enabled'] }} == True" # Modified for SI Baseline
-  tags:
-    - level1
-    - level2
-    - rhel8_section1
-    - rule_1.1.14
+#- name: "SCORED | 1.1.14 | Ensure nodev option set on /home partition"
+#  mount:
+#    name: "/home"
+#    src: "{{ rhel8cis_home['source'] }}"
+#    state: mounted
+#    fstype: "{{ rhel8cis_home['fstype'] }}"
+#    opts: "{{ rhel8cis_home['opts'] }}"
+#  when:
+#    - "{{ rhel8cis_home['enabled'] }} == True" # Modified for SI Baseline
+#  tags:
+#    - level1
+#    - level2
+#    - rhel8_section1
+#    - rule_1.1.14
 
 - name: "SCORED | 1.1.15 | Ensure nodev option set on /dev/shm partition\n
          SCORED | 1.1.16 | Ensure nosuid option set on /dev/shm partition\n
@@ -492,7 +494,7 @@
   block:
     - name: "SCORED | 1.5.1 | Ensure permissions on bootloader config are configured" # modified si baseline
       stat:
-        path: /etc/grub2-efi.cfg
+        path: /etc/grub2.cfg
       register: grub_cfg
 
     - name: "SCORED | 1.5.1 | Ensure permissions on bootloader config are configured"
