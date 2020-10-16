@@ -7,7 +7,7 @@
         state: present
       with_items:
         - selinux-policy
-        - libselinux-python
+#        - libselinux-python
         - openssh-server
         - which
 
